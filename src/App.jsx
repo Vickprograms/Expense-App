@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseTable from "./components/ExpenseTable";
 import SearchBar from "./components/SearchBar";
-import "./App.css";
+import "./components/App.css";
 
 function App() {
   const [expenses, setExpenses] = useState([]);
@@ -16,9 +16,9 @@ const handleSearch = (term) => {
   setSearch(term.toLowerCase());
 };
 
-const filteredExpenses = expenses.filter((expenses)) => {
-  expenses.description.toLowerCase().includes(search)
-};
+const filteredExpenses = expenses.filter((expense) => 
+  expense.description.toLowerCase().includes(search.toLowerCase())
+);
 
   return (
     <>
