@@ -27,7 +27,7 @@ const ExpenseForm = ({ onAddExpense }) => {
         placeholder="Enter expense description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border rounded text-white"
         required
       />
       <input
@@ -35,7 +35,7 @@ const ExpenseForm = ({ onAddExpense }) => {
         placeholder="Enter expense amount"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border rounded text-white"
         required
       />
       <input
@@ -43,7 +43,7 @@ const ExpenseForm = ({ onAddExpense }) => {
         placeholder="Enter category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border rounded text-white"
         required
       />
       <button
