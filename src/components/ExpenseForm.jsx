@@ -1,28 +1,59 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
-function ExpenseForm({ onAddExpense }) {
-  const [form, setForm] = useState({ description: "", amount: "", category: "" });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+const ExpenseForm = ({ onAddExpense }) => {
+  const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState('');
+  const [category, setCategory] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (form.description && form.amount && form.category) {
-      onAddExpense({ ...form, id: Date.now() });
-      setForm({ description: "", amount: "", category: "" });
-    }
+    if (!description || !amount || !category) return;
+
+    onAddExpense({
+      description,
+      amount: parseFloat(amount),
+      category,
+    });
+
+    setDescription('');
+    setAmount('');
+    setCategory('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="description" placeholder="Description" value={form.description} onChange={handleChange} />
-      <input name="amount" type="number" placeholder="Amount" value={form.amount} onChange={handleChange} />
-      <input name="category" placeholder="Category" value={form.category} onChange={handleChange} />
-      <button type="submit">Add Expense</button>
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <input
+        type="text"
+        placeholder="Enter expense description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        className="w-full p-2 border rounded"
+        required
+      />
+      <input
+        type="number"
+        placeholder="Enter expense amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+        className="w-full p-2 border rounded"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Enter category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className="w-full p-2 border rounded"
+        required
+      />
+      <button
+        type="submit"
+        className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+      >
+        Submit
+      </button>
     </form>
   );
-}
+};
 
 export default ExpenseForm;
