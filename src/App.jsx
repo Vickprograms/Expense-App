@@ -36,7 +36,7 @@ const App = () => {
           <input
             type="text"
             placeholder="Search expenses..."
-            className="w-full mb-4 p-2 border rounded"
+            className="w-full mb-4 p-2 border rounded text-white"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
